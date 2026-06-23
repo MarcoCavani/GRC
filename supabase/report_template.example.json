@@ -1,0 +1,42 @@
+{
+  "name": "ITGC RACM Assessment Report",
+  "sections": [
+    {
+      "type": "cover",
+      "title": "{{assessment.title}}",
+      "fields": ["period", "scope", "status", "generated_at"]
+    },
+    {
+      "type": "summary",
+      "heading": "Executive summary",
+      "metrics": [
+        { "label": "Total controls assessed", "source": "racm_items.count" },
+        { "label": "Effective", "source": "racm_items.count_where:overall_conclusion=effective" },
+        { "label": "Partially effective", "source": "racm_items.count_where:overall_conclusion=partially_effective" },
+        { "label": "Ineffective", "source": "racm_items.count_where:overall_conclusion=ineffective" },
+        { "label": "Not yet tested", "source": "racm_items.count_where:overall_conclusion=not_tested" }
+      ]
+    },
+    {
+      "type": "table",
+      "heading": "Risk and control matrix",
+      "source": "racm_items",
+      "columns": [
+        "ref",
+        "category",
+        "risk_title",
+        "control_objective",
+        "control_owner",
+        "design_effectiveness_result",
+        "operating_effectiveness_result",
+        "overall_conclusion",
+        "observations_noted"
+      ]
+    },
+    {
+      "type": "narrative",
+      "heading": "Conclusion",
+      "field": "conclusion_notes"
+    }
+  ]
+}

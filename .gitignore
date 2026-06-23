@@ -1,0 +1,5 @@
+node_modules
+dist
+.env
+.env.import
+.DS_Store
